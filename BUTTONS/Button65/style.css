@@ -1,0 +1,81 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animated-button {
+    position: relative;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: #fff;
+    background: linear-gradient(135deg, #6d83f2, #7fe8d3);
+    border: none;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.animated-button::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, #ff8a65, #ff6f61, #ff7043, #ff5722);
+    transition: all 0.6s ease;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.animated-button:hover::before {
+    width: 300%;
+    height: 300%;
+    border-radius: 0;
+    transform: rotate(45deg);
+}
+
+.animated-button:hover {
+    color: #000;
+}
+
+.animated-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.4s ease;
+    pointer-events: none;
+}
+
+.animated-button:hover::after {
+    box-shadow: 0px 0px 50px rgba(255, 0, 150, 0.5), 0px 0px 80px rgba(255, 255, 255, 0.3);
+}
+
+.animated-button:hover {
+    animation: mouse-track 0.3s ease forwards;
+}
+
+@keyframes mouse-track {
+    0% {
+        transform: translate(-2px, -2px);
+    }
+
+    50% {
+        transform: translate(2px, 2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
